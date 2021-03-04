@@ -1,0 +1,28 @@
+{
+  "name": "smpp-sms",
+  "version": "1.0.0",
+  "description": "sms gateway",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harishrhareesh/smpp-sms.git"
+  },
+  "keywords": [
+    "api",
+    "sms"
+  ],
+  "author": "h@rish",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harishrhareesh/smpp-sms/issues"
+  },
+  "homepage": "https://github.com/harishrhareesh/smpp-sms#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "smpp": "^0.5.0"
+  }
+}
