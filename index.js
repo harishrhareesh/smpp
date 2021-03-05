@@ -22,20 +22,13 @@ session.on("connect", function () {
       password: process.env.SMS_PASSWORD,
     },
     function (pdu) {
-      console.log("pdu status", lookupPDUStatusKey(pdu.command_status));
+      console.log("pdu status");
       if (pdu.command_status == 0) {
         console.log("Successfully bound");
       }
     }
   );
 });
-function lookupPDUStatusKey(pduCommandStatus) {
-  for (var k in smpp.errors) {
-    if (smpp.errors[k] == pduCommandStatus) {
-      return k;
-    }
-  }
-}
 
 function connectSMPP() {
   console.log("smpp reconnecting");
@@ -66,7 +59,7 @@ app.get("/send-sms", (req, res) => {
       short_message: "text",
     },
     function (pdu) {
-      console.log("sms pdu status", lookupPDUStatusKey(pdu.command_status));
+      console.log("sms pdu status");
       if (pdu.command_status == 0) {
         // Message successfully sent
         console.log(pdu.message_id);
