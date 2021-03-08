@@ -22,7 +22,7 @@ session.on("connect", function () {
       password: process.env.SMS_PASSWORD,
     },
     function (pdu) {
-      console.log("pdu status");
+      console.log("pdu status", pdu);
       if (pdu.command_status == 0) {
         console.log("Successfully bound");
       }
@@ -30,17 +30,17 @@ session.on("connect", function () {
   );
 });
 
-function connectSMPP() {
-  console.log("smpp reconnecting");
-  session.connect();
-}
+// function connectSMPP() {
+//   console.log("smpp reconnecting");
+//   session.connect();
+// }
 
-session.on("close", function () {
-  console.log("smpp disconnected");
-  if (didConnect) {
-    connectSMPP();
-  }
-});
+// session.on("close", function () {
+//   console.log("smpp disconnected");
+//   if (didConnect) {
+//     connectSMPP();
+//   }
+// });
 
 session.on("error", function (error) {
   console.log("smpp error", error);
