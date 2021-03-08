@@ -14,7 +14,7 @@ var session = smpp.connect({
 
 session.on("connect", function () {
   didConnect = true;
-  console.log("connecting....");
+  console.log("connecting....", process.env.SMS_PASSWORD);
 
   session.bind_transceiver(
     {
