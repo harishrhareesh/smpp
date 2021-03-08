@@ -14,7 +14,7 @@ var session = smpp.connect({
 
 session.on("connect", function () {
   didConnect = true;
-  console.log("connecting....", process.env.SMS_PASSWORD);
+  console.log("connecting....");
 
   session.bind_transceiver(
     {
@@ -59,7 +59,7 @@ app.get("/send-sms", (req, res) => {
       short_message: "text",
     },
     function (pdu) {
-      console.log("sms pdu status");
+      console.log("sms pdu status", pdu);
       if (pdu.command_status == 0) {
         // Message successfully sent
         console.log(pdu.message_id);
@@ -67,7 +67,7 @@ app.get("/send-sms", (req, res) => {
     }
   );
 
-  res.status(200).json({ session });
+  res.status(200).json({ pdu });
 });
 
 app.listen(port, () => {
