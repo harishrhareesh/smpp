@@ -67,7 +67,7 @@ app.get("/send-sms", (req, res) => {
     }
   );
 
-  res.status(200).json({ pdu });
+  res.status(200).json({ message: "ok" });
 });
 
 app.listen(port, () => {
