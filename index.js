@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-const port = 8000;
+const port = 9000;
 var didConnect = false;
 var smpp = require("smpp");
 var session = smpp.connect({
@@ -16,18 +16,18 @@ session.on("connect", function () {
   didConnect = true;
   console.log("connecting....");
 
-  session.bind_transceiver(
-    {
-      system_id: process.env.SMS_USER,
-      // password: process.env.SMS_PASSWORD,
-    },
-    function (pdu) {
-      console.log("pdu status", pdu);
-      if (pdu.command_status == 0) {
-        console.log("Successfully bound");
-      }
-    }
-  );
+  // session.bind_transceiver(
+  //   {
+  //     system_id: process.env.SMS_USER,
+  //     // password: process.env.SMS_PASSWORD,
+  //   },
+  //   function (pdu) {
+  //     console.log("pdu status", pdu);
+  //     if (pdu.command_status == 0) {
+  //       console.log("Successfully bound");
+  //     }
+  //   }
+  // );
 });
 
 // function connectSMPP() {
@@ -52,21 +52,46 @@ app.get("/", (req, res) => {
 });
 
 app.get("/send-sms", (req, res) => {
-  session.submit_sm(
+  // session.submit_sm(
+  //   {
+  //     // source_addr: from,
+  //     destination_addr: "9801033925",
+  //     short_message: "text",
+  //   },
+  //   function (pdu) {
+  //     console.log("sms pdu status", pdu);
+  //     if (pdu.command_status == 0) {
+  //       // Message successfully sent
+  //       console.log(pdu.message_id);
+  //     }
+  //   }
+  // );
+  session.bind_transceiver(
     {
-      // source_addr: from,
-      destination_addr: "9801033925",
-      short_message: "text",
+      system_id: process.env.SMS_USER,
+      // password: process.env.SMS_PASSWORD,
     },
     function (pdu) {
-      console.log("sms pdu status", pdu);
+      console.log("pdu status", pdu);
       if (pdu.command_status == 0) {
-        // Message successfully sent
-        console.log(pdu.message_id);
+        console.log("Successfully bound");
+        session.submit_sm(
+          {
+            // source_addr: from,
+            destination_addr: "9801033925",
+            short_message: "text",
+          },
+          function (pdu) {
+            console.log("sms pdu status", pdu);
+            if (pdu.command_status == 0) {
+              // Message successfully sent
+              console.log(pdu.message_id);
+            }
+          }
+        );
       }
     }
   );
-
   res.status(200).json({ message: "ok" });
 });
 
