@@ -78,9 +78,9 @@ app.get("/send-sms", (req, res) => {
         console.log("Successfully bound");
         session.submit_sm(
           {
-            // source_addr: "Test_Alert",
-            // source_addr_ton: 5,
-            // dest_addr_ton: 1,
+            source_addr: "Test_Alert",
+            source_addr_ton: 5,
+            dest_addr_ton: 1,
             destination_addr: "+9779849116714",
             decode_scheme: 0,
             short_message: "text",
