@@ -82,10 +82,12 @@ app.get("/send-sms", (req, res) => {
             source_addr_ton: 5,
             // dest_addr_ton: 1,
             data_coding: 0,
-            destination_addr: "9849116714",
+            destination_addr: "9840001023",
             // decode_scheme: 0,
             UTC: 8,
-            short_message: "text",
+            short_message:
+              "You vaccine test trail is approved. you can come on friday" +
+              new Date(),
           },
           function (pdu) {
             console.log("sms pdu status", pdu);
