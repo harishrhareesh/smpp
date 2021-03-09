@@ -70,6 +70,7 @@ app.get("/send-sms", (req, res) => {
     {
       system_id: process.env.SMS_USER,
       // password: process.env.SMS_PASSWORD,
+      sequence_number: 8,
     },
     function (pdu) {
       console.log("pdu status", pdu);
@@ -77,9 +78,10 @@ app.get("/send-sms", (req, res) => {
         console.log("Successfully bound");
         session.submit_sm(
           {
-            source_addr: "Test_Alert",
-            source_addr_ton: 5,
-            dest_addr_ton: 1,
+            // source_addr: "Test_Alert",
+            // source_addr_ton: 5,
+            // dest_addr_ton: 1,
+
             destination_addr: "+9779849116714",
             short_message: "text",
           },
