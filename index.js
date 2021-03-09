@@ -55,7 +55,7 @@ app.get("/send-sms", (req, res) => {
   session.submit_sm(
     {
       // source_addr: from,
-      destination_addr: "9779801033925",
+      destination_addr: "+9779801033925",
       short_message: "text",
     },
     function (pdu) {
