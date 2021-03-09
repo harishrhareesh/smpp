@@ -81,8 +81,8 @@ app.get("/send-sms", (req, res) => {
             // source_addr: "Test_Alert",
             // source_addr_ton: 5,
             // dest_addr_ton: 1,
-
             destination_addr: "+9779849116714",
+            decode_scheme: 0,
             short_message: "text",
           },
           function (pdu) {
