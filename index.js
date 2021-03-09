@@ -82,7 +82,7 @@ app.get("/send-sms", (req, res) => {
             source_addr_ton: 5,
             // dest_addr_ton: 1,
             data_coding: 0,
-            destination_addr: "9840001023",
+            destination_addr: "9801033925",
             // decode_scheme: 0,
             UTC: 8,
             short_message:
