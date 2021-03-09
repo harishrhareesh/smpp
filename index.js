@@ -19,7 +19,7 @@ session.on("connect", function () {
   session.bind_transceiver(
     {
       system_id: process.env.SMS_USER,
-      password: process.env.SMS_PASSWORD,
+      // password: process.env.SMS_PASSWORD,
     },
     function (pdu) {
       console.log("pdu status", pdu);
